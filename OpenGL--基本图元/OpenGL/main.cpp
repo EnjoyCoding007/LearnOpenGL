@@ -39,7 +39,7 @@ GLGeometryTransform transformPipeline;
 GLShaderManager     shaderManager;
 GLFrame             cameraFrame; //观察者坐标系
 GLFrame             objectFrame; //物体坐标系
-GLFrustum           viewFrustum; //投影矩阵
+GLFrustum           viewFrustum; //视景体
 
 //不同图元对应的容器
 GLBatch             pointBatch;
