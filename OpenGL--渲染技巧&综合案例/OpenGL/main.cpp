@@ -92,6 +92,7 @@ void init()
     //开启深度测试
     glEnable(GL_DEPTH_TEST);
     //开启背面剔除
+    glCullFace(GL_BACK);
     glEnable(GL_CULL_FACE);
     
     //地球

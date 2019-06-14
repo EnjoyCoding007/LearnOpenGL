@@ -169,12 +169,12 @@ void init()
     //半径
     GLfloat r = 7.0f;
     // 三角形个数
-    GLint vCount = 66;
+    GLint vCount = 28;
     
-    //原点(x,y,z) = (0,0,-3.0);
+    //原点(x,y,z) = (0,0,-5.0);
     vPoints[nVerts][0] = 0.0f;
     vPoints[nVerts][1] = 0.0f;
-    vPoints[nVerts][2] = -4.0f;
+    vPoints[nVerts][2] = -5.0f;
     //M3D_2PI 就是2Pi = 360°
     for(GLdouble angle = 0; angle <= M3D_2PI; angle += M3D_2PI / vCount) {
         
@@ -233,6 +233,7 @@ void drawWireFrameBatch(GLBatch* pBatch)
      参数2：为几何图形变换指定 4 * 4 变换矩阵
      参数3：颜色值
      */
+    
     shaderManager.UseStockShader(GLT_SHADER_FLAT, transformPipeline.GetModelViewProjectionMatrix(), vRed);
     pBatch->Draw();
     
@@ -250,14 +251,13 @@ void drawWireFrameBatch(GLBatch* pBatch)
      glDisable(GLenum mode); 用于关闭指定的功能 功能由参数决定
      */
     
-    //画边框
-    glPolygonOffset(-1.0f, -1.0f);// 偏移深度，在同一位置要绘制填充和边线，会产生z冲突，所以要偏移
+    // 画边框
+    glPolygonOffset(-1.0f, -1.0f);
+    // 偏移深度，在同一位置要绘制填充和边线，会产生z冲突，所以要偏移
     glEnable(GL_POLYGON_OFFSET_LINE);
     
     // 画反锯齿，让黑边好看些
     glEnable(GL_LINE_SMOOTH);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
     //绘制线框几何黑色版 三种模式，实心，边框，点，可以作用在正面，背面，或者两面
     //通过调用glPolygonMode将多边形正面或者背面设为线框模式，实现线框渲染
